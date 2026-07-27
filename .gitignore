@@ -1,0 +1,16 @@
+# File: .gitignore
+# Function: Exclude generated firmware, host-tool, and IDE artifacts.
+# Author: Don
+# Date: 2026-07-27
+# Version: 1.0.0
+
+firmware/build/
+firmware/images/*/generated/
+firmware/projects/keil/**/DebugConfig/
+firmware/projects/keil/**/RTE/
+firmware/projects/keil/**/*.uvoptx
+firmware/projects/keil/**/*.uvguix.*
+firmware/projects/keil/*/
+Tools/**/build*/
+__pycache__/
+*.pyc
