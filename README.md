@@ -16,18 +16,28 @@ product differences.
 ## Create a product
 
 1. Select **Use this template** on GitHub.
-2. Clone the new repository with submodules:
+2. Clone the new repository and initialize only the dependencies required by
+   a normal application:
 
    ```powershell
-   git clone --recurse-submodules <new-repository-url>
+   git clone <new-repository-url>
+   cd <new-repository-name>
+   git submodule update --init --depth 1 YiCore
+   git -C YiCore submodule update --init --depth 1 third_party/lwrb
    ```
 
-3. Replace `PRODUCT`, `BOARD`, `MCU`, and `TOOLCHAIN` placeholders.
-4. Generate MCU startup/HAL glue into `firmware/common/`.
-5. Add the product board description under `boards/<board-name>/`.
-6. Implement image differences under `firmware/images/`.
-7. Create Keil and/or GCC metadata under `firmware/projects/`.
-8. Record the verified toolchain, memory map, and debug probe in `context.md`.
+3. Initialize MCUboot only when developing the bootloader:
+
+   ```powershell
+   git -C YiCore submodule update --init --depth 1 third_party/mcuboot
+   ```
+
+4. Replace `PRODUCT`, `BOARD`, `MCU`, and `TOOLCHAIN` placeholders.
+5. Generate MCU startup/HAL glue into `firmware/common/`.
+6. Add the product board description under `boards/<board-name>/`.
+7. Implement image differences under `firmware/images/`.
+8. Create Keil and/or GCC metadata under `firmware/projects/`.
+9. Record the verified toolchain, memory map, and debug probe in `context.md`.
 
 ## Layout
 

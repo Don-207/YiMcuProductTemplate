@@ -1,3 +1,4 @@
 [submodule "YiCore"]
 	path = YiCore
 	url = https://github.com/Don-207/YiCore.git
+	shallow = true
