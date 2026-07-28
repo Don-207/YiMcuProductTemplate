@@ -32,12 +32,16 @@ product differences.
    git -C YiCore submodule update --init --depth 1 third_party/mcuboot
    ```
 
-4. Replace `PRODUCT`, `BOARD`, `MCU`, and `TOOLCHAIN` placeholders.
-5. Generate MCU startup/HAL glue into `firmware/common/`.
-6. Add the product board description under `boards/<board-name>/`.
-7. Implement image differences under `firmware/images/`.
-8. Create Keil and/or GCC metadata under `firmware/projects/`.
-9. Record the verified toolchain, memory map, and debug probe in `context.md`.
+4. Create product content directly in the repository root:
+
+   ```powershell
+   .\create-board MyBoard
+   .\create-app --board MyBoard
+   .\create-boot
+   .\create-test
+   ```
+
+`create-app` is required; `create-boot` and `create-test` are optional.
 
 ## Layout
 
